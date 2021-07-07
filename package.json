@@ -46,6 +46,6 @@
       "prettier --write src/",
       "eslint --cache --fix src/"
     ],
-    "*.{less,css,md}": "prettier --write /src"
+    "*.{less,css,md}": "prettier --write src/"
   }
 }
