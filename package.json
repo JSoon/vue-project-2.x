@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "~10.15.0",
+    "node": "~12.22.0",
     "npm": "~6.4.0"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "prettier": "npx prettier --write src/",
-    "lint": "npx eslint --cache --fix --ext .js,.vue src/"
+    "prettier": "npx prettier --write src/**/*.{js,vue}",
+    "lint": "npx eslint --cache --fix --ext .js,.vue src/",
+    "prepare": "husky install"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -40,15 +41,11 @@
     "vue-cli-plugin-style-resources-loader": "^0.1.5",
     "vue-template-compiler": "^2.6.11"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,vue}": [
-      "npx prettier --write src/",
-      "npx eslint --cache --fix --ext .js,.vue src/"
-    ]
+      "prettier --write src/",
+      "eslint --cache --fix src/"
+    ],
+    "*.{less,css,md}": "prettier --write /src"
   }
 }
