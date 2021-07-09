@@ -1,3 +1,6 @@
+const { NODE_ENV } = process.env;
+const NODE_ENV_PROD = 'production';
+
 module.exports = {
   root: true,
   env: {
@@ -20,6 +23,7 @@ module.exports = {
 
     // https://eslint.org/docs/rules/
     // https://eslint.org/docs/user-guide/configuring#extending-configuration-files
+    'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
     'comma-dangle': ['error', 'always-multiline'],
     'comma-spacing': ['error', { before: false, after: true }],
     'consistent-return': 'off',
@@ -31,6 +35,8 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'linebreak-style': 'off',
     'max-len': ['error', 200],
+    'no-console': NODE_ENV === NODE_ENV_PROD ? 'warn' : 'off',
+    'no-debugger': NODE_ENV === NODE_ENV_PROD ? 'warn' : 'off',
     'no-irregular-whitespace': 'off',
     'no-param-reassign': 'warn',
     'no-shadow': 'warn',
@@ -42,7 +48,5 @@ module.exports = {
     'prefer-destructuring': 'off',
 
     // #endregion
-
-    // "prettier/prettier": "error"
   },
 };
